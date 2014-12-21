@@ -1,0 +1,32 @@
+{
+  "name": "lambda-kinesis-bigquery",
+  "description": "AWS Lambda function for insert Kinesis event to Google BigQuery",
+  "version": "1.0.0",
+  "bugs": {
+    "url": "https://github.com/hakobera/lambda-kinesis-bigquery/issues"
+  },
+  "dependencies": {
+    "gcloud": "^0.11.0",
+    "lodash": "^2.4.1"
+  },
+  "devDependencies": {
+    "aws-sdk": "^2.1.4",
+    "mocha": "^2.0.1",
+    "should": "^4.4.1",
+    "sinon": "^1.12.2"
+  },
+  "homepage": "https://github.com/hakobera/lambda-kinesis-bigquery",
+  "keywords": [
+    "kinesis",
+    "bigquery"
+  ],
+  "license": "MIT",
+  "main": "KinesisBigQuery.js",
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@github.com/hakobera/lambda-kinesis-bigquery.git"
+  },
+  "scripts": {
+    "test": "mocha --reporter spec --bail --check-leaks test/"
+  }
+}

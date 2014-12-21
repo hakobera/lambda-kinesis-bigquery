@@ -1,0 +1,72 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Resources": {
+    "LambdaExecRole": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Version" : "2012-10-17",
+          "Statement": [ {
+            "Effect": "Allow",
+            "Principal": {
+              "Service": [ "lambda.amazonaws.com" ]
+            },
+            "Action": [ "sts:AssumeRole" ]
+          } ],
+          "Path": "/",
+          "Policies": [ {
+            "PolicyName": "lambda_exec_role_policy",
+            "PolicyDocument": {
+              "Version" : "2012-10-17",
+              "Statement": [ {
+                "Effect": "Allow",
+                "Action": [
+                  "logs:*"
+                ],
+                "Resource": [
+                  "arn:aws:logs:*:*:*"
+                ]
+              } ]
+            }
+          } ]
+        }
+      }
+    },
+
+    "LambdaInvokeRole": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Version" : "2012-10-17",
+          "Statement": [ {
+            "Effect": "Allow",
+            "Principal": {
+              "Service": [ "lambda.amazonaws.com" ]
+            },
+            "Action": [ "sts:AssumeRole" ]
+          } ],
+          "Path": "/",
+          "Policies": [ {
+            "PolicyName": "lambda_invoke_role_policy",
+            "PolicyDocument": {
+              "Version" : "2012-10-17",
+              "Statement": [ {
+                "Effect": "Allow",
+                "Action": [
+                  "lambda:InvokeFunction",
+                  "kinesis:GetRecords",
+                  "kinesis:GetShardIterator",
+                  "kinesis:DescribeStream",
+                  "kinesis:ListStreams"
+                ],
+                "Resource": [
+                  "*"
+                ]
+              } ]
+            }
+          } ]
+        }
+      }
+    }
+  }
+}
