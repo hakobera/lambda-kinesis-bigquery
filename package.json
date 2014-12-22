@@ -27,6 +27,6 @@
     "url": "ssh://git@github.com/hakobera/lambda-kinesis-bigquery.git"
   },
   "scripts": {
-    "test": "mocha --reporter spec --bail --check-leaks test/"
+    "test": "./test/setup.sh && mocha --reporter spec --bail --check-leaks test/"
   }
 }
