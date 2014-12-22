@@ -23,7 +23,7 @@ echo "Upload function"
 aws lambda upload-function \
    --function-name KinesisBigQuery \
    --function-zip tmp/KinesisBigQuery.zip \
-   --role $IAM_ROLE \
+   --role $IAM_EXEC_ROLE \
    --mode event \
    --handler KinesisBigQuery.handler \
    --runtime nodejs \
