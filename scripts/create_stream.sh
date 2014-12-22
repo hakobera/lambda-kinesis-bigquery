@@ -8,6 +8,8 @@ STREAM_ARN=`aws kinesis describe-stream --stream-name $STREAM_NAME | jq -r '.Str
 
 sleep 30s
 
+IAM_INVOKE_ROLE=`aws iam list-roles | jq -r '.Roles[].Arn' | grep LambdaInvokeRole`
+
 aws lambda add-event-source \
   --function-name KinesisBigQuery \
   --role $IAM_INVOKE_ROLE  \
