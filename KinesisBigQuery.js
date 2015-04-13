@@ -12,11 +12,17 @@ exports.handler = function(event, context) {
 
   console.log(config);
   console.log(JSON.stringify(event, null, '  '));
+  var now = Math.floor(Date.now() / 1000);
   for(i = 0, l = event.Records.length; i < l; ++i) {
     kinesis = event.Records[i].kinesis;
     var sequenceNumber = kinesis.sequenceNumber;
-    var payload = JSON.parse(new Buffer(kinesis.data, 'base64').toString('utf8'));
-    rows.push(_.merge({ id: sequenceNumber }, payload));
+    try {
+      var payload = JSON.parse(new Buffer(kinesis.data, 'base64').toString('utf8'));
+      rows.push(_.merge({ id: sequenceNumber, time: now }, payload));
+    } catch (err) {
+      console.log(err);
+      // ignore JSON parse error
+    }
   }
   console.log(JSON.stringify(rows, null, '  '));
 
