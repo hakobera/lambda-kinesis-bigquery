@@ -23,7 +23,9 @@
               "Action": [
                 "logs:*"
               ],
-              "Resource": "arn:aws:logs:*:*:*"
+              "Resource": [
+                "arn:aws:logs:*:*:*"
+              ]
             }]
           }
         }]
@@ -56,7 +58,9 @@
                 "kinesis:DescribeStream",
                 "kinesis:ListStreams"
               ],
-              "Resource": "*"
+              "Resource": [
+                "*"
+              ]
             }]
           }
         }]
