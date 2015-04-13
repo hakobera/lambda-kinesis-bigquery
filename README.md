@@ -6,7 +6,7 @@ AWS Lambda function for insert Kinesis event to Google BigQuery example.
 
 ## How to setup
 
-1. Create IAM Role for Lambda 
+1. Create IAM Role for Lambda
 2. Upload function
 3. Create Kinesis stream and Lambda event source
 4. Create BigQuery table
@@ -62,8 +62,6 @@ Wait event source is ready.
 
 ```
 $ aws lambda get-event-source --uuid UUID
-$ ./scripts/create_stream.sh
-Create Kinesis stream named examplestream
 {
     "Status": "Ok",
     "UUID": "xx4f17f5-f680-4c82-81de-9d2552999b8f",
@@ -99,5 +97,3 @@ Waiting on bqjob_xxxxx_0000014a72faad47_1 ... (0s) Current status: DONE
 | 49545115243490985018280067714973144582180062593244200962 | user1    |
 +----------------------------------------------------------+----------+
 ```
-
-
