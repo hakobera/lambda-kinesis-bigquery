@@ -14,4 +14,5 @@ aws lambda add-event-source \
   --function-name KinesisBigQuery \
   --role $IAM_INVOKE_ROLE  \
   --event-source $STREAM_ARN \
-  --batch-size 100
+  --batch-size 100 \
+  --parameters InitialPositionInStream=LATEST
