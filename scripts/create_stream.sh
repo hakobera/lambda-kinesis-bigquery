@@ -8,11 +8,8 @@ STREAM_ARN=`aws kinesis describe-stream --stream-name $STREAM_NAME | jq -r '.Str
 
 sleep 30s
 
-IAM_INVOKE_ROLE=`aws iam list-roles | jq -r '.Roles[].Arn' | grep LambdaInvokeRole`
-
-aws lambda add-event-source \
+aws lambda create-event-source-mapping \
   --function-name KinesisBigQuery \
-  --role $IAM_INVOKE_ROLE  \
-  --event-source $STREAM_ARN \
+  --event-source-arn $STREAM_ARN \
   --batch-size 100 \
-  --parameters InitialPositionInStream=LATEST
+  --starting-position LATEST
