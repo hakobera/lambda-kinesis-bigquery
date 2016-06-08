@@ -61,7 +61,7 @@ Create Kinesis stream named examplestream
 Wait event source is ready.
 
 ```
-$ aws lambda get-event-source --uuid UUID
+$ aws lambda get-event-source-mapping --uuid UUID
 {
     "Status": "Ok",
     "UUID": "xx4f17f5-f680-4c82-81de-9d2552999b8f",
