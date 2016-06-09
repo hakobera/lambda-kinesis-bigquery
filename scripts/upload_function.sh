@@ -47,7 +47,7 @@ aws lambda create-function \
    --zip-file fileb://tmp/KinesisBigQuery.zip \
    --role $IAM_EXEC_ROLE \
    --handler KinesisBigQuery.handler \
-   --runtime nodejs \
+   --runtime nodejs4.3 \
 
 echo "==============="
 echo "Done"
