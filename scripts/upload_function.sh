@@ -41,7 +41,7 @@ zip -r tmp/KinesisBigQuery.zip node_modules/
 IAM_EXEC_ROLE=`aws iam list-roles | jq -r '.Roles[].Arn' | grep LambdaExecRole`
 
 echo "==============="
-echo "Create function"
+echo "Upload function"
 aws lambda create-function \
    --function-name KinesisBigQuery \
    --zip-file fileb://tmp/KinesisBigQuery.zip \
