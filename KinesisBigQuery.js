@@ -27,7 +27,7 @@ exports.handler = function(event, context) {
   }
   console.log(JSON.stringify(rows, null, '  '));
 
-  table.insert(rows, function (err, insertErrors) {
+  table.insert(rows, function (err, insertErrors, apiResponse) {
     if (err) return context.done(err);
     if (insertErrors && insertErrors.length > 0) {
       insertErrors.forEach(function (insertError) {
@@ -38,7 +38,7 @@ exports.handler = function(event, context) {
       });
       return context.done('error');
     }
-
+    console.log(apiResponse);
     context.done(null, "success");
   });
 };
