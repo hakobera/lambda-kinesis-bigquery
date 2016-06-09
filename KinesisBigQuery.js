@@ -1,6 +1,6 @@
 var config = require('./gcpconfig');
 var gcloud = require('gcloud');
-var lodash = require('lodash');
+var _ = require('lodash');
 
 exports.handler = function(event, context) {
   var bigquery = gcloud.bigquery({
@@ -19,7 +19,7 @@ exports.handler = function(event, context) {
     try {
       var decode = new Buffer(kinesis.data, 'base64').toString('utf8');
       var payload = JSON.parse(new Buffer(decode, 'base64').toString('utf8'));
-      rows.push(lodash.merge({ id: sequenceNumber, time: now }, payload));
+      rows.push(_.merge({ id: sequenceNumber, time: now }, payload));
     } catch (err) {
       console.log(err);
       // ignore JSON parse error
