@@ -17,8 +17,7 @@ exports.handler = function(event, context) {
     kinesis = event.Records[i].kinesis;
     var sequenceNumber = kinesis.sequenceNumber;
     try {
-      var decode = new Buffer(kinesis.data, 'base64').toString('utf8');
-      var payload = JSON.parse(new Buffer(decode, 'base64').toString('utf8'));
+      var payload = JSON.parse(new Buffer(kinesis.data, 'base64').toString('utf8'));
       rows.push(_.merge({ id: sequenceNumber, time: now }, payload));
     } catch (err) {
       console.log(err);
