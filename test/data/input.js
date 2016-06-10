@@ -1,6 +1,6 @@
 function b64(obj) {
-  var decode = new Buffer(JSON.stringify(obj), 'utf8').toString('base64');
-  return new Buffer(decode, 'utf8').toString('base64');
+  var encode = new Buffer(JSON.stringify(obj), 'utf8').toString('base64');
+  return new Buffer(encode, 'utf8').toString('base64');
 }
 
 var data1 = b64({ user_id: 'user1' });
