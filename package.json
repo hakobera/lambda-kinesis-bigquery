@@ -6,8 +6,8 @@
     "url": "https://github.com/hakobera/lambda-kinesis-bigquery/issues"
   },
   "dependencies": {
-    "gcloud": "^0.13.2",
-    "lodash": "^2.4.1"
+    "gcloud": "^0.28.0",
+    "lodash": "^4.13.1"
   },
   "devDependencies": {
     "aws-sdk": "^2.1.23",

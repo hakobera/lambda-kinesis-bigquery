@@ -61,7 +61,7 @@ Create Kinesis stream named examplestream
 Wait event source is ready.
 
 ```
-$ aws lambda get-event-source --uuid UUID
+$ aws lambda get-event-source-mapping --uuid UUID
 {
     "Status": "Ok",
     "UUID": "xx4f17f5-f680-4c82-81de-9d2552999b8f",
@@ -75,7 +75,7 @@ $ aws lambda get-event-source --uuid UUID
 Create BigQuery table with schema you want.
 
 ```
-$ bq --project_id myproject mk test.kinesis id:string,user_id:string
+$ bq --project_id myproject mk test.kinesis id:string,time:integer,user_id:string
 ```
 
 ### Test put record
@@ -83,7 +83,7 @@ $ bq --project_id myproject mk test.kinesis id:string,user_id:string
 `id` value is automatically set in lambda function
 
 ```
-$ ./scripts/put_record.sh '{"user_id":"test"}'
+$ ./scripts/put_record.sh '{"user_id":"user1"}'
 ```
 
 After put record, run query to confirm data is correctly inserted.
@@ -91,9 +91,9 @@ After put record, run query to confirm data is correctly inserted.
 ```
 $ bq --project_id myproject query "select * from test.kinesis"
 Waiting on bqjob_xxxxx_0000014a72faad47_1 ... (0s) Current status: DONE
-+----------------------------------------------------------+----------+
-|                            id                            | user_id  |
-+----------------------------------------------------------+----------+
-| 49545115243490985018280067714973144582180062593244200962 | user1    |
-+----------------------------------------------------------+----------+
++----------------------------------------------------------+------------+----------+
+|                            id                            |    time    | user_id  |
++----------------------------------------------------------+------------+----------+
+| 49545115243490985018280067714973144582180062593244200962 | 1465459398 | user1    |
++----------------------------------------------------------+------------+----------+
 ```
